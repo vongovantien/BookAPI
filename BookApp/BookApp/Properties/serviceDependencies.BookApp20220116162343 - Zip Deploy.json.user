@@ -1,0 +1,34 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2022-01-16T09:33:46.3474877Z"
+    },
+    "apis1": {
+      "restored": true,
+      "restoreTime": "2022-01-16T09:28:55.7120051Z"
+    }
+  },
+  "parameters": {
+    "apis1.resourceGroupName": {
+      "Name": "apis1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "VanTien"
+    },
+    "mssql1.subscriptionId": {
+      "Name": "mssql1.subscriptionId",
+      "Type": "subscription",
+      "Value": "219eef83-b60e-4b2e-9518-5acd14dd8058"
+    },
+    "apis1.subscriptionId": {
+      "Name": "apis1.subscriptionId",
+      "Type": "subscription",
+      "Value": "219eef83-b60e-4b2e-9518-5acd14dd8058"
+    },
+    "mssql1.resourceGroupName": {
+      "Name": "mssql1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "DefaultResourceGroup-EA"
+    }
+  }
+}

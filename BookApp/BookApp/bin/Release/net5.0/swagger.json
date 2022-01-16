@@ -1,0 +1,383 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "BookApp",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/account/signup": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/SignUpModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/account/login": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/SignInModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/books": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "kw",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "in": "query",
+            "name": "sortBy",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/BookModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/books/{id}": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Books"
+        ],
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/BookModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Books"
+        ],
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Operation"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/weatherforecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/WeatherForecast"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SignUpModel": {
+      "required": [
+        "confirmPassword",
+        "email",
+        "fistName",
+        "lastName",
+        "password",
+        "userName"
+      ],
+      "type": "object",
+      "properties": {
+        "fistName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "confirmPassword": {
+          "type": "string"
+        }
+      }
+    },
+    "SignInModel": {
+      "required": [
+        "email",
+        "password"
+      ],
+      "type": "object",
+      "properties": {
+        "email": {
+          "format": "email",
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "BookModel": {
+      "required": [
+        "title"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "OperationType": {
+      "format": "int32",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "type": "integer"
+    },
+    "Operation": {
+      "type": "object",
+      "properties": {
+        "operationType": {
+          "$ref": "#/definitions/OperationType"
+        },
+        "path": {
+          "type": "string"
+        },
+        "op": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "value": { }
+      }
+    },
+    "WeatherForecast": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "temperatureC": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "temperatureF": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        },
+        "summary": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
